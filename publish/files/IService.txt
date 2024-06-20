@@ -1,0 +1,18 @@
+﻿using Common_DTO.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Service_BLL.Interfaces
+{
+    public interface IsClassService
+    {
+        Task<dClass> AddNewsClassAsync(dClass sClass);
+        Task DeleteAsync(int id);
+        Task<dClass> GetByIdAsync(int id);
+        Task<List<dClass>> GetAllsClasssAsync();
+        Task<dClass> UpdateAsync(dClass sClass);
+    }
+}

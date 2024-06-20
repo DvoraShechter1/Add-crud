@@ -1,0 +1,104 @@
+﻿using AutoMapper;
+using Common_DTO.Models;
+using Microsoft.Extensions.Logging;
+using Repository_Dal.Interfaces;
+using Repository_Dal.Models;
+using Service_BLL.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Service_BLL.Services
+{
+    public class sClassService : IsClassService
+    {
+        private readonly IsClassRepository sClassRepository;
+        private readonly IMapper mapper;
+        private readonly ILogger<string> logger;
+
+        public sClassService(IsClassRepository sClassRepository, IMapper mapper, ILogger<string> logger)
+        {
+            this.sClassRepository = sClassRepository;
+            this.mapper = mapper;
+            this.logger = logger;
+        }
+
+        public async Task<dClass> AddNewsClassAsync(dClass e)
+        {
+            try
+            {
+                var map = mapper.Map<sClass>(e);
+                var answer=await sClassRepository.AddAsync(map);
+                return mapper.Map<dClass>(answer);
+            }
+            catch (Exception ex)
+            {
+                logger.LogError("faild to add sClass in the service" + ex.Message);
+                //TODO: handele exception
+                throw ex;
+            }
+        }
+
+        public async Task DeleteAsync(int id)
+        {
+            try
+            {
+                await sClassRepository.DeleteAsync(id);
+            }
+            catch (Exception ex)
+            {
+                logger.LogError("faild to delete sClass in the service" + ex.Message);
+                //TODO: handele exception
+                throw ex;
+            }
+        }
+
+        public async Task<List<dClass>> GetAllsClasssAsync()
+        {
+            try
+            {
+                var answer= await sClassRepository.GetAllAsync();
+                return mapper.Map<List<dClass>>(answer);    
+            }
+            catch (Exception ex)
+            {
+                logger.LogError("faild to get all sClasss in the service" + ex.Message);
+                //TODO: handele exception
+                throw ex;
+            }
+        }
+
+        public async Task<dClass> GetByIdAsync(int id)
+        {
+            try
+            {
+                var answer= await sClassRepository.GetByIdAsync(id);
+                return mapper.Map<dClass>(answer);
+            }
+            catch (Exception ex)
+            {
+                logger.LogError("faild to get sClass in the service" + ex.Message);
+                //TODO: handele exception
+                throw ex;
+            }
+        }
+
+        public async Task<dClass> UpdateAsync(dClass e)
+        {
+            try
+            {
+                var map= mapper.Map<sClass>(e);
+                var answer= await sClassRepository.UpdateAsync(map);
+                return mapper.Map<dClass>(answer);
+            }
+            catch(Exception ex)
+            {
+                logger.LogError("faild to update sClass in the service" + ex.Message);
+                //TODO: handele exception
+                throw ex;
+            }
+        }
+    }
+}

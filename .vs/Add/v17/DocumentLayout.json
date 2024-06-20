@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Users\\The user\\Desktop\\Add\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5E86E07C-DC09-4E48-9B73-E670061980A7}|Add\\Add.csproj|D:\\Users\\The user\\Desktop\\Add\\add\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E86E07C-DC09-4E48-9B73-E670061980A7}|Add\\Add.csproj|solutionrelative:add\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E86E07C-DC09-4E48-9B73-E670061980A7}|Add\\Add.csproj|d:\\users\\the user\\desktop\\add\\add\\function.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E86E07C-DC09-4E48-9B73-E670061980A7}|Add\\Add.csproj|solutionrelative:add\\function.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Function.cs",
+              "DocumentMoniker": "D:\\Users\\The user\\Desktop\\Add\\Add\\Function.cs",
+              "RelativeDocumentMoniker": "Add\\Function.cs",
+              "ToolTip": "D:\\Users\\The user\\Desktop\\Add\\Add\\Function.cs",
+              "RelativeToolTip": "Add\\Function.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAAwCEAAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-01T14:01:07.407Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Users\\The user\\Desktop\\Add\\Add\\Program.cs",
+              "RelativeDocumentMoniker": "Add\\Program.cs",
+              "ToolTip": "D:\\Users\\The user\\Desktop\\Add\\Add\\Program.cs",
+              "RelativeToolTip": "Add\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAADAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-01T14:00:29.533Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

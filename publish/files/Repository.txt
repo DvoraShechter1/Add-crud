@@ -1,0 +1,113 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using Repository_Dal.Interfaces;
+using Repository_Dal.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Repository_Dal.Repositories
+{
+    public class sClassRepository : IsClassRepository
+    {
+        private readonly IContext context;
+        private readonly ILogger<string> logger;
+        public sClassRepository(IContext context, ILogger<string> logger)
+        {
+            this.context = context;
+            this.logger = logger;
+        }
+
+        public async Task<sClass> AddAsync(sClass entity)
+        {
+            try
+            {
+                var newEntity = await this.context.sClasss.AddAsync(entity);
+                await context.SaveChangesAsync();
+                return newEntity.Entity;
+            }
+            catch (Exception ex)
+            {
+                logger.LogError("failed to add sClass" + ex.Message.ToString());
+                return new sClass();
+            }
+        }
+
+        public async Task DeleteAsync(int id)
+        {
+            try
+            {
+                var entity = await GetByIdAsync(id);
+                context.sClasss.Remove(entity);
+                await context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                logger.LogError("failed to delete sClass" + ex.Message.ToString());
+            }
+        }
+
+        public async Task<List<sClass>> GetAllAsync()
+        {
+            try
+            {
+                return await context.sClasss.ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                logger.LogError("failed to get sClasss" + ex.Message.ToString());
+                return new List<sClass>();
+            }
+        }
+
+        public async Task<sClass> GetByIdAsync(int code)
+        {
+            try
+            {
+                var entity = await context.sClasss.FirstOrDefaultAsync(p => p.Id == code);
+                if (entity == null)
+                {
+                    logger.LogError("The sClass is null");
+                    return new sClass();
+                }
+                return entity;
+            }
+            catch (Exception ex)
+            {
+                logger.LogError("failed to get sClass" + ex.Message.ToString());
+                return new sClass();
+            }
+        }
+
+        public async Task<sClass> UpdateAsync(sClass entity)
+        {
+            try
+            {
+                var sClassToUpdate = await GetByIdAsync(entity.Code);
+                if (sClassToUpdate == null)
+                {
+                    logger.LogError("the code is not exit");
+                    return new sClass();
+                }
+                await DeleteAsync(entity.Code);
+                await AddAsync(entity);
+                //sClassToUpdate.Name = entity.Name;
+                //sClassToUpdate.DepartmentCode = entity.DepartmentCode;
+                //sClassToUpdate.CompanyCode = entity.CompanyCode;
+                //sClassToUpdate.Price = entity.Price;
+                //sClassToUpdate.Description = entity.Description;
+                //sClassToUpdate.Picture = entity.Picture;
+
+                await context.SaveChangesAsync();
+                return entity;
+            }
+            catch (Exception ex)
+            {
+                logger.LogError("failed to update sClass" + ex.Message.ToString());
+                return new sClass();
+            }
+        }
+    }
+}

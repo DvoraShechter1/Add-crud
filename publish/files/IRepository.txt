@@ -1,0 +1,18 @@
+﻿using Repository_Dal.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Repository_Dal.Interfaces
+{
+    public interface IsClassRepository
+    {
+        Task<List<sClass>> GetAllAsync();
+        Task<sClass> GetByIdAsync(int id);
+        Task<sClass> UpdateAsync(sClass entity);
+        Task<sClass> AddAsync(sClass entity);
+        Task DeleteAsync(int id);
+    }
+}
